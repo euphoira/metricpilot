@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>MetricPilot · Data, with evidence</title><link rel="stylesheet" href="/static/style.css"></head>
+<body>
+<aside class="sidebar">
+ <a class="brand" href="/" aria-label="MetricPilot home"><span class="brand-icon">m<span>•</span></span>MetricPilot</a>
+ <div class="workspace-label">LOCAL WORKSPACE <span class="live-dot"></span></div>
+ <div class="nav-active"><span>◈</span> Analytics studio <span class="nav-pill">01</span></div>
+ <div class="section-label">YOUR DATASETS <button id="open-import" title="Import CSV" aria-label="Import CSV">+</button></div>
+ <div id="datasets" class="dataset-list"></div>
+ <div class="section-label history-label">RECENT ANALYSES</div><div id="history" class="history-list"></div>
+ <div class="sidebar-bottom"><div class="shield">✓</div><div><strong>A local data workspace</strong><small>Read-only SQL · Verified results</small></div></div>
+</aside>
+<main>
+ <header class="topbar"><div><span class="breadcrumb">Workspace</span><span class="separator">/</span>Analytics studio</div><span id="mode" class="mode-badge">Connecting…</span></header>
+ <div class="page">
+  <div class="heading-row"><div><div class="eyebrow">EXPLORE. QUERY. VERIFY.</div><h1>Make sense of your data.</h1><p class="intro">Ask a question. Follow the SQL. Trust the evidence.</p></div><button id="import-top" class="button secondary">↑ &nbsp; Import CSV</button></div>
+  <div id="notice" class="notice" role="status"></div>
+  <section class="question-panel" aria-label="Ask your data"><div class="panel-overline"><span class="spark">✦</span> ASK YOUR DATA <span id="dataset-summary"></span></div>
+   <label for="question" class="sr-only">Question about the selected dataset</label><textarea id="question" rows="2" placeholder="Which regions generated the most revenue?"></textarea>
+   <div class="ask-bottom"><div class="ask-hint"><span class="lock">▣</span> Sandboxed SQL · Every claim traced to a result</div><button id="run" class="button primary">Run analysis <span>↗</span></button></div>
+  </section>
+  <div class="examples-row"><span>TRY A QUESTION</span><div id="examples"></div></div>
+  <div class="section-header"><div><h2 id="report-title">Your analysis workspace</h2><p id="report-subtitle">Run a question to see verified answers and the queries behind them.</p></div><a id="export" class="button secondary hidden" download>↓ &nbsp; Export report</a></div>
+  <div id="welcome" class="welcome"><div class="welcome-graphic"><div></div><div></div><div></div><div></div><div></div></div><h3>Good answers start with evidence.</h3><p>Select a suggested question above. MetricPilot will inspect your dataset,<br>run a bounded SQL query, and verify each reported value.</p><div class="workflow"><span>01 <b>Inspect</b></span><i>→</i><span>02 <b>Query</b></span><i>→</i><span>03 <b>Verify</b></span></div></div>
+  <div id="results" class="hidden"><div id="claims" class="claims-grid"></div><div class="analysis-grid"><section class="card chart-card"><div class="card-heading"><div><span class="eyebrow">RESULT EXPLORER</span><h3 id="chart-title">Query results</h3></div><span id="verified" class="verified">✓ Cell-verified</span></div><div id="chart" class="chart"></div><p id="summary" class="report-summary"></p><div id="limitations" class="limitations"></div></section><section class="card trace-card"><div class="card-heading"><div><span class="eyebrow">EXECUTION TRACE</span><h3>A transparent path</h3></div><span id="duration" class="muted"></span></div><div id="events" class="events"></div></section></div>
+   <section class="card query-card"><div class="card-heading"><div><span class="eyebrow">CHECK THE SOURCE</span><h3>SQL & result provenance</h3></div><span class="readonly">READ ONLY</span></div><div id="queries"></div></section>
+  </div>
+  <footer><span>MetricPilot / Open source analytics agent</span><span id="mode-footnote">Offline demo runs real SQL against sample data.</span></footer>
+ </div>
+</main>
+<dialog id="import-dialog"><form id="import-form"><div class="dialog-heading"><div><span class="eyebrow">BRING YOUR OWN DATA</span><h2>Import a CSV dataset</h2></div><button type="button" id="close-import" aria-label="Close dialog">×</button></div><p>UTF-8 CSV · up to 1 MiB, 10,000 rows, 30 columns.<br>Use simple column names such as <code>revenue</code> or <code>order_id</code>.</p><label for="dataset-name">Dataset name</label><input id="dataset-name" required maxlength="80" placeholder="Quarterly sales"><label for="csv-file">Choose a CSV file</label><input id="csv-file" type="file" accept=".csv,text/csv"><label for="csv-text">Or paste CSV</label><textarea id="csv-text" rows="6" placeholder="region,revenue&#10;East,12000&#10;West,9800"></textarea><p id="import-error" role="alert"></p><button type="submit" class="button primary">Import dataset ↗</button></form></dialog>
+<script src="/static/app.js" defer></script></body></html>
