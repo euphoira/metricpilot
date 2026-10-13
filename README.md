@@ -1,5 +1,7 @@
 # MetricPilot
 
+[![CI](https://github.com/euphoira/metricpilot/actions/workflows/ci.yml/badge.svg)](https://github.com/euphoira/metricpilot/actions/workflows/ci.yml)
+
 **把自然语言分析落到可追溯的 SQL 和查询单元格上。**
 
 MetricPilot 是独立的 CSV 数据分析 Agent 开源项目。上传业务数据后，Agent 可以检查表结构、

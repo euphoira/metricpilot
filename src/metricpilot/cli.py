@@ -4,6 +4,7 @@ import argparse
 import asyncio
 import json
 import os
+import sys
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -16,6 +17,10 @@ from metricpilot.evaluation import evaluate
 
 
 def main():
+    # Windows redirected streams may default to a code page that cannot print Chinese.
+    for stream in (sys.stdout, sys.stderr):
+        if hasattr(stream, "reconfigure"):
+            stream.reconfigure(encoding="utf-8")
     load_dotenv()
     parser = argparse.ArgumentParser(
         prog="metricpilot", description="Analytics with query evidence"
